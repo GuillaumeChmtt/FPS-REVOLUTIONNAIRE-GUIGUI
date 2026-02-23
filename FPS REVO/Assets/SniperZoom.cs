@@ -9,7 +9,6 @@ public class SniperZoom : MonoBehaviour
 
     public GameObject crosshair;
     public GameObject scopeOverlay;
-    public MouseLook mouseLook; // Référence au script MouseLook
 
     private bool isZoomed = false;
     private float targetFOV;
@@ -40,22 +39,18 @@ public class SniperZoom : MonoBehaviour
             if (isZoomed)
             {
                 targetFOV = zoomedFOV;
-
                 if (crosshair != null) crosshair.SetActive(false);
                 if (scopeOverlay != null) scopeOverlay.SetActive(true);
-                if (mouseLook != null) mouseLook.SetZoomed(true); // Réduit la sensibilité
             }
             else
             {
                 targetFOV = normalFOV;
-
                 if (crosshair != null) crosshair.SetActive(true);
                 if (scopeOverlay != null) scopeOverlay.SetActive(false);
-                if (mouseLook != null) mouseLook.SetZoomed(false); // Restore la sensibilité
             }
         }
 
-        // Transition smooth du zoom
+        // Zoom
         mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, targetFOV, zoomSpeed * Time.deltaTime);
     }
 }
