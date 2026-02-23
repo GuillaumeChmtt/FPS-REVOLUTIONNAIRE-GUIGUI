@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 
 public class MouseLook : MonoBehaviour
@@ -8,7 +8,7 @@ public class MouseLook : MonoBehaviour
 
     public float normalSensitivityX = 10F;
     public float normalSensitivityY = 10F;
-    public float zoomedSensitivityMultiplier = 0.3f; // 30% de sensibilité en visée
+    public float zoomedSensitivityMultiplier = 0.3f;
 
     public float sensitivityX = 10F;
     public float sensitivityY = 10F;
@@ -21,12 +21,11 @@ public class MouseLook : MonoBehaviour
 
     void Start()
     {
-        // Initialise les sensibilités
         sensitivityX = normalSensitivityX;
         sensitivityY = normalSensitivityY;
     }
 
-    void Update()
+    void LateUpdate() 
     {
         if (axes == RotationAxes.MouseXAndY)
         {
@@ -47,7 +46,6 @@ public class MouseLook : MonoBehaviour
         }
     }
 
-    // Fonction appelée par SniperZoom pour changer la sensibilité
     public void SetZoomed(bool zoomed)
     {
         if (zoomed)
